@@ -50,3 +50,8 @@
 </table>
 
 
+{if isset($smarty.session.USER_ROL)}
+    {if ($smarty.session.USER_ROL)==1}
+    <h2>Para eliminar funciones sin entradas<a href="eliminarfunciones">Haga clic aqui</a></h2>
+{/if}
+{/if}

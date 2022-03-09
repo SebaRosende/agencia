@@ -27,6 +27,7 @@ class authController
             $this->model->registerUser($userEmail, $userPassword);
         }
     }
+    
     function showLogin()
     {
         $this->view->renderLogin();

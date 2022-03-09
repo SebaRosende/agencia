@@ -23,6 +23,7 @@ class entradasController
     {
 
         $logUser = $this->helper->UserLogged();
+        
         if ($logUser) {
 
             $cant_entradas = $_REQUEST['cant_entradas'];
@@ -32,6 +33,7 @@ class entradasController
             $fecha_venta = date('Y-m-d');
             $id_user = $_SESSION['USER_ID'];
             $id_rol = $_SESSION['USER_ROL'];
+
             if ($fecha_evento < $fecha_venta) {
                 echo 'Evento caducado';
             } else {
@@ -73,6 +75,6 @@ class entradasController
       }
 
 
-
+     
 
 }

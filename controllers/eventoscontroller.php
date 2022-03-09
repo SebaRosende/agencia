@@ -42,7 +42,7 @@ class eventosController
     function deleteEventos()
     {
         $log = $this->helper->checkRol();
-        $eventos = $this->model->getEventosSinFc();
+       // $eventos = $this->model->getEventosSinFc();
         
         //echo "<pre>",var_dump($eventos),'</pre>';
         if ($log) {

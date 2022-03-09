@@ -12,13 +12,13 @@
     </tr>
     {foreach from=$entradas item=$info}
 
-        <form method="POST" action="editarEntrada/{$info->id_entrada}">
+        <form method="POST" action="eliminarEntrada/{$info->id_entrada}">
             <tr>
                
                 <td>{$info->id_entrada}</td>
                 <td>{$info->fecha_venta}</td>
                 <td>{$info->vip}</td>
-                <td>{$info->id_funcion}</td>
+                <td>{$info->id_funcion_fk}</td>
                 <td>{$info->id_rol}</td>
                 <td>{$info->id_user}</td>
                 <td> <button type="submit">Eliminar</button> </td>  

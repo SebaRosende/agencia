@@ -1,6 +1,6 @@
 <?php
 require_once 'libs/Router.php';
-require_once 'api.controller.php';
+require_once './api/api.controller.php';
 
 
 

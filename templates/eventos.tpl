@@ -36,7 +36,8 @@
 </form>
 
 
-{if isset($smarty.session.USER_ROL)==1}
+{if isset($smarty.session.USER_ROL)}
+    {if ($smarty.session.USER_ROL)==1}
     <h2>Para eliminar eventos sin funciones <a href="eliminareventosf">Haga clic aqui</a></h2>
-    
+{/if}
 {/if}

@@ -1,6 +1,6 @@
 <?php
 require_once './model/eventosmodel.php';
-require_once './api.view.php';
+require_once './api/api.view.php';
 
 class ApiController{
 
@@ -14,13 +14,13 @@ public function __construct()
     }
 
     function showEventos($params = null){
-        $eventos=$this->model->allEventos();
         $eventos=NULL;
+        $eventos=$this->model->allEventos();
+    
         if ($eventos){
             $this->viewapi->response($eventos, 200);
         }else{
             $this->viewapi->response("No hay eventos", 204);
-
         }
         
     }
@@ -32,7 +32,6 @@ public function __construct()
             $this->viewapi->response($evento, 200);
         }else{
             $this->viewapi->response("No hay evento con esa ID", 204);
-
         }
         
     }

@@ -55,10 +55,13 @@ switch ($params[0]) {
     case 'miscompras':
         $entradacontrolador->misCompras();
         break;
-   case 'editarEntrada':
-    $entradacontrolador->eliminarEntrada($params[1]);
+    case 'eliminarEntrada':
+        $entradacontrolador->eliminarEntrada($params[1]);
+        break;
+    case 'eliminarfunciones':
+        $funcioncontrolador->deleteFuncionSinEntrada();
         break;
     default:
-    $funcioncontrolador->showHome();
+        $funcioncontrolador->showHome();
         break;
 }
