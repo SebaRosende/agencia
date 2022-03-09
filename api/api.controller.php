@@ -1,6 +1,6 @@
 <?php
-require_once 'model.php';
-require_once 'api.view.php';
+require_once './model/eventosmodel.php';
+require_once './api.view.php';
 
 class ApiController{
 
@@ -9,7 +9,7 @@ private $viewapi;
    
 public function __construct()
     {
-        $this->model= new model();
+        $this->model= new eventosModel();
         $this->viewapi = new ApiView();
     }
 
@@ -28,7 +28,6 @@ public function __construct()
     function showEventoById($params = null){
         $id = $params[':ID'];
         $evento=$this->model->getEventoById($id);
-        
         if ($evento){
             $this->viewapi->response($evento, 200);
         }else{

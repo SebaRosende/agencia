@@ -1,6 +1,9 @@
 <?php
+require_once './controllers/entradascontroller.php';
+require_once './controllers/eventoscontroller.php';
+require_once './controllers/funcionescontroller.php';
+require_once './controllers/authcontroller.php';
 
-require_once 'controller.php';
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
 if (!empty($_GET['action'])) {
@@ -10,49 +13,52 @@ if (!empty($_GET['action'])) {
 }
 $params = explode('/', $action);
 
-$controlador = new controller();
+$entradacontrolador = new entradasController();
+$funcioncontrolador = new funcionesController();
+$eventocontrolador = new eventosController();
+$authcontrolador = new authController();
 
 switch ($params[0]) {
     case 'home':
-        $controlador->showHome();
+        $funcioncontrolador->showHome();
         break;
     case 'eventos':
-        $controlador->showEventos();
+        $eventocontrolador->showEventos();
         break;
     case 'funciones':
-        $controlador->showFunciones();
+        $funcioncontrolador->showFunciones();
         break;
     case 'editarCiudad':
-        $controlador->updateCiudad();
+        $eventocontrolador->updateCiudad();
         break;
     case 'eliminareventosf':
-        $controlador->deleteEventos();
+        $eventocontrolador->deleteEventos();
         break;
     case 'registrarse':
-        $controlador->showRegistro();
+        $authcontrolador->showRegistro();
         break;
     case 'login':
-        $controlador->showLogin();
+        $authcontrolador->showLogin();
         break;
     case 'verify':
-        $controlador->login();
+        $authcontrolador->login();
         break;
     case 'logout':
-        $controlador->logout();
+        $authcontrolador->logout();
         break;
     case 'comprar':
-        $controlador->comprar();
+        $entradacontrolador->comprar();
         break;
     case 'buscar':
-        $controlador->buscarEventos();
+        $eventocontrolador->buscarEventos();
         break;
     case 'miscompras':
-        $controlador->misCompras();
+        $entradacontrolador->misCompras();
         break;
    case 'editarEntrada':
-        $controlador->eliminarEntrada($params[1]);
+    $entradacontrolador->eliminarEntrada($params[1]);
         break;
     default:
-        $controlador->showHome();
+    $funcioncontrolador->showHome();
         break;
 }

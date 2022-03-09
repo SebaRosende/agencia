@@ -5,10 +5,10 @@
         <tr>
             <th>Fecha</th>
             <th>Nombre</th>
-            <th>Capacidad máxima</th>
+            <th>Capacidad</th>
             <th>Ciudad</th>         
-            <th>Función</th> 
-            <th>Evento</th> 
+            <th>ID Función</th> 
+            <th>ID Evento</th> 
         </tr>
         {foreach from=$funciones item=$info}
 

@@ -3,6 +3,7 @@
 <table>
     <tbody>
         <tr>
+            <th>ID</th>
             <th>Eventos</th>
             <th>Detalles</th>
             <th>Ciudad</th>
@@ -34,6 +35,8 @@
 <button type="submit">Buscar eventos</button>
 </form>
 
-{if ($smarty.session.USER_ROL)==1}
-    <a href="eliminareventosf">Eliminar eventos sin función</a>
+
+{if isset($smarty.session.USER_ROL)==1}
+    <h2>Para eliminar eventos sin funciones <a href="eliminareventosf">Haga clic aqui</a></h2>
+    
 {/if}

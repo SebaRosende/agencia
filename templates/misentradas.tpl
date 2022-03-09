@@ -1,15 +1,16 @@
+{include file='header.tpl'}
 
 <table>
 <tbody>
     <tr>
-        <th>id_entrada</th>
+        <th>ID Entrada</th>
         <th>Fecha</th>
         <th>Vip</th>
-        <th>id_funcion</th>
-        <th>id_rol</th>
-        <th>id_user</th>
+        <th>ID Función</th>
+        <th>ID Rol</th>
+        <th>ID User</th>
     </tr>
-    {foreach from=$eventos item=$info}
+    {foreach from=$entradas item=$info}
 
         <form method="POST" action="editarEntrada/{$info->id_entrada}">
             <tr>
@@ -31,3 +32,6 @@
 
 </tbody>
 </table>
+
+
+{include file='footer.tpl'}
