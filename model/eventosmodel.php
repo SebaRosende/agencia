@@ -28,15 +28,23 @@ class eventosModel
 
     function getEventosSinFc()
     {
-
         $query = $this->db_agencia->prepare('SELECT * FROM evento LEFT JOIN funcion ON id_evento=id_evento_fk');
         $query->execute();
         $alleventos = $query->fetchAll(PDO::FETCH_OBJ);
         return $alleventos;
     }
 
+/* OTRO EJEMPLO DE CONSULTA CON RIGHT JOIN
+function getEventosSinFc()
+    {
+        $query = $this->db_agencia->prepare('SELECT * FROM funcion RIGHT JOIN evento ON id_evento_fk=id_evento where id_funcion is NULL');
+        $query->execute();
+        $alleventos = $query->fetchAll(PDO::FETCH_OBJ);
+        return $alleventos;
+    }
 
-    function getEventoById($id)
+*/   
+ function getEventoById($id)
     {
         $query = $this->db_agencia->prepare('SELECT * FROM evento WHERE id_evento=?');
         $query->execute([$id]);

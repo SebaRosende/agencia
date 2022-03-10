@@ -27,6 +27,7 @@ class funcionesController
         $allfunciones = $this->model->allFunciones();
         $this->view->funciones($allfunciones);
     }
+/*BORRAR FUNCIONES SIN ENTRADAS ASOCIADAS*/
 
     function deleteFuncionSinEntrada()
     {

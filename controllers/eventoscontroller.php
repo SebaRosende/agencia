@@ -6,15 +6,16 @@ require_once './controllers/authcontroller.php';
 class eventosController
 {
     private $view;
-    private $model;  
+    private $model;
     private $helper;
+    private $funcionesmodel;
 
     public function __construct()
     {
         $this->view = new view();
         $this->model = new eventosModel();
+        $this->funcionesmodel = new funcionmodel();
         $this->helper = new helper();
-       
     }
 
     function showEventos()
@@ -38,16 +39,13 @@ class eventosController
     }
 
 
-
+    /*
     function deleteEventos()
-    {
-        $log = $this->helper->checkRol();
-       // $eventos = $this->model->getEventosSinFc();
-        
-        //echo "<pre>",var_dump($eventos),'</pre>';
-        if ($log) {
-            $eventos = $this->model->getEventosSinFc();
-          
+    {    $log = $this->helper->checkRol();
+        $eventos = $this->model->getEventosSinFc();
+//        echo "<pre>",var_dump($eventos),'</pre>';
+       if ($log) {
+            $eventos = $this->model->getEventosSinFc();        
             foreach ($eventos as $info) {
                 if ($info->id_evento_fk == NULL) {
                     $this->model->deleteEvento($info->id_evento);
@@ -59,21 +57,48 @@ class eventosController
             echo "No esta logueado como administrador";
         }
     }
+*/
+    /*CASO DE BORRAR EVENTOS QUE NO TENGAN FUNCION ASOCIADA*/
+
+    function deleteEventos()
+    {
+        $eventos = $this->model->allEventos();
+        $funciones = $this->funcionesmodel->allFunciones();
+        $contador = 0;
+
+        foreach ($eventos as $infoevento) {
+             
+            
+            foreach ($funciones as $info) {
+
+                if ($infoevento->id_evento==$info->id_evento_fk) {
+                    $contador += 1;
+                }              
+            }
+            if ($contador == 0) {
+                echo "<pre>", var_dump($infoevento->id_evento), '</pre>';
+                //$this->model->deleteEvento($infoevento->id_evento);
+            }
+            $contador = 0;
+        }
+    }
+
+
+
+
+
 
 
     function buscarEventos()
     {
-      
+
         $evento = $_REQUEST['evento'];
         $eventos = $this->model->buscarEventos($evento);
-       
-       if (empty ($eventos)) {
-                   echo "no hay eventos";
+
+        if (empty($eventos)) {
+            echo "no hay eventos";
         } else {
-           $this->view->mostrarBusqueda($eventos);
+            $this->view->mostrarBusqueda($eventos);
         }
-        }
-
-
-
+    }
 }
