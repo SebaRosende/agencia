@@ -16,7 +16,7 @@ class entradasController
         $this->helper = new helper();
     }
 
-
+    
 
 
     function comprar()

@@ -9,6 +9,14 @@ class entradaModel
     }
 
 
+    function allEntradas(){
+        $query = $this->db_agencia->prepare('SELECT * FROM entrada INNER JOIN funcion ON id_funcion_fk=id_funcion');
+        $query->execute();
+        $allEntradas = $query->fetchAll(PDO::FETCH_OBJ); // obtengo un arreglo con todos las entradas
+        return $allEntradas;
+    }
+
+
     function  insertEntrada($fecha_venta, $vip, $id_funcion, $id_rol, $id_user)
     {
         $query = $this->db_agencia->prepare('INSERT INTO entrada (fecha_venta, vip, id_funcion, id_rol, id_user) VALUES (?, ?, ?, ?,?)');
